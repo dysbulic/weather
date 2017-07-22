@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722001932) do
+ActiveRecord::Schema.define(version: 20170722002715) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "readings", force: :cascade do |t|
+    t.integer "location_id"
+    t.string "conditions"
+    t.decimal "pressure"
+    t.decimal "temperature"
+    t.integer "wind_id"
+    t.decimal "humidity"
+    t.datetime "time"
+    t.datetime "sunrise"
+    t.datetime "sunset"
+    t.decimal "cloudiness"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_readings_on_location_id"
+    t.index ["wind_id"], name: "index_readings_on_wind_id"
   end
 
   create_table "vectors", force: :cascade do |t|

@@ -1,0 +1,39 @@
+%h1 Listing readings
+
+%table
+  %thead
+    %tr
+      %th Location
+      %th Conditions
+      %th Pressure
+      %th Temperature
+      %th Wind
+      %th Humidity
+      %th Time
+      %th Sunrise
+      %th Sunset
+      %th Cloudiness
+      %th
+      %th
+      %th
+
+  %tbody
+    - @readings.each do |reading|
+      %tr
+        %td= reading.location
+        %td= reading.conditions
+        %td= reading.pressure
+        %td= reading.temperature
+        %td= reading.wind
+        %td= reading.humidity
+        %td= reading.time
+        %td= reading.sunrise
+        %td= reading.sunset
+        %td= reading.cloudiness
+        %td= link_to 'Show', reading
+        %td= link_to 'Edit', edit_reading_path(reading)
+        %td= link_to 'Destroy', reading, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Reading', new_reading_path

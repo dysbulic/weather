@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Location:
+  = @reading.location
+%p
+  %b Conditions:
+  = @reading.conditions
+%p
+  %b Pressure:
+  = @reading.pressure
+%p
+  %b Temperature:
+  = @reading.temperature
+%p
+  %b Wind:
+  = @reading.wind
+%p
+  %b Humidity:
+  = @reading.humidity
+%p
+  %b Time:
+  = @reading.time
+%p
+  %b Sunrise:
+  = @reading.sunrise
+%p
+  %b Sunset:
+  = @reading.sunset
+%p
+  %b Cloudiness:
+  = @reading.cloudiness
+
+= link_to 'Edit', edit_reading_path(@reading)
+\|
+= link_to 'Back', readings_path
