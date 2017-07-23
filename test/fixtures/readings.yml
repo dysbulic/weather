@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location: one
+  conditions: MyString
+  pressure: 9.99
+  temperature: 9.99
+  wind_speed: 9.99
+  wind_direction: 9.99
+  humidity: 9.99
+  time: 2017-07-21 20:27:15
+  sunrise: 2017-07-21 20:27:15
+  sunset: 2017-07-21 20:27:15
+  cloudiness: 9.99
+
+two:
+  location: two
+  conditions: MyString
+  pressure: 9.99
+  temperature: 9.99
+  wind_speed: 9.99
+  wind_direction: 9.99
+  humidity: 9.99
+  time: 2017-07-21 20:27:15
+  sunrise: 2017-07-21 20:27:15
+  sunset: 2017-07-21 20:27:15
+  cloudiness: 9.99

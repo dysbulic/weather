@@ -1,0 +1,43 @@
+= form_for @reading do |f|
+  - if @reading.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@reading.errors.count, "error")} prohibited this reading from being saved:"
+      %ul
+        - @reading.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :conditions
+    = f.text_field :conditions
+  .field
+    = f.label :pressure
+    = f.text_field :pressure
+  .field
+    = f.label :temperature
+    = f.text_field :temperature
+  .field
+    = f.label :wind_speed
+    = f.text_field :wind_speed
+  .field
+    = f.label :wind_direction
+    = f.text_field :wind_direction
+  .field
+    = f.label :humidity
+    = f.text_field :humidity
+  .field
+    = f.label :time
+    = f.datetime_select :time
+  .field
+    = f.label :sunrise
+    = f.datetime_select :sunrise
+  .field
+    = f.label :sunset
+    = f.datetime_select :sunset
+  .field
+    = f.label :cloudiness
+    = f.text_field :cloudiness
+  .actions
+    = f.submit 'Save'

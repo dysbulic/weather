@@ -10,11 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721211120) do
+ActiveRecord::Schema.define(version: 20170722172812) do
 
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.string "zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "readings", force: :cascade do |t|
+    t.integer "location_id"
+    t.string "conditions"
+    t.decimal "pressure"
+    t.decimal "temperature"
+    t.decimal "humidity"
+    t.datetime "time"
+    t.datetime "sunrise"
+    t.datetime "sunset"
+    t.decimal "cloudiness"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "wind_speed"
+    t.decimal "wind_direction"
+    t.index ["location_id"], name: "index_readings_on_location_id"
+  end
+
+  create_table "vectors", force: :cascade do |t|
+    t.decimal "direction"
+    t.decimal "speed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
