@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ReadingTest < ActiveSupport::TestCase
   setup do
-    @location = Location.find_or_create_by( zipcode: '376sdf' )
+    @location = Location.find_or_create_by( zipcode: '37618' )
   end
 
   test "loads valid data" do
@@ -15,7 +15,7 @@ class ReadingTest < ActiveSupport::TestCase
   end
 
   test "fails on empty data" do
-    response = stub(body: file_fixture('empty.json').read)
+    response = stub(body: '{}')
     RestClient.expects(:get).returns(response)
     
     assert_raises ArgumentError do
@@ -29,5 +29,9 @@ class ReadingTest < ActiveSupport::TestCase
     assert_raises RestClient::NotFound do
       Reading.for(@location)
     end
+  end
+
+  test "suceeds" do
+    r = Reading.for(@location)
   end
 end

@@ -2,13 +2,11 @@ class Reading < ApplicationRecord
   belongs_to :location
 
   def self.for(location)
-    response = RestClient.get 'http://api.openweathermap.org/data/2.5/weather',
+    response = RestClient.get Rails.application.secrets.weather_uri,
                               { params: { q: location.to_s,
-                                          appid: '3ea93adb81958b1ec5268b4d2f00a749',
+                                          appid: Rails.application.secrets.app_key,
                                           units: :imperial } }
-    
-    #raise 
-    
+
     res = JSON.parse(response.body, { symbolize_names: true })
 
     key_map = {
