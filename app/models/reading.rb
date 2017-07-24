@@ -7,6 +7,10 @@ class Reading < ApplicationRecord
                                           appid: '3ea93adb81958b1ec5268b4d2f00a749',
                                           units: :imperial } }
     
+    #raise 
+    
+    res = JSON.parse(response.body, { symbolize_names: true })
+
     key_map = {
       conditions: [:weather, 0, :main],
       pressure: [:main, :pressure],
@@ -20,16 +24,16 @@ class Reading < ApplicationRecord
       wind_direction: [:wind, :deg]
     }
 
-    res = JSON.parse(response.body, { symbolize_names: true })
-
     vals_map = key_map.map do |key, res_key|
       [key, res.dig(*res_key)]
     end
 
     vals = Hash[vals_map]
 
+    raise ArgumentError, 'No values returned' if vals.values.compact.empty?
+    
     [:time, :sunrise, :sunset].each do |date_key|
-      vals[date_key] = Time.at(vals[date_key])
+      vals[date_key] &&= Time.at(vals[date_key])
     end
 
     vals[:location] = location
