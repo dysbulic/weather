@@ -24,3 +24,4 @@ Create an application that will track current weather measurements for a given s
 # Usage
 
 To load files: `rake load:zipcodes[test/fixtures/files/zips.txt]`
+To update data: `rake update:locations` which may be run by cron for regular updates
